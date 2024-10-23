@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_scratch/views/homeView.dart';
+import 'package:flutter_app_scratch/views/home.view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
          appBarTheme: const AppBarTheme(
           backgroundColor: Colors.green,
       ), 
+      // primarySwatch: Colors.green,
     ),
       title: 'Flutter from scratch',
       home: const Homeview(),
