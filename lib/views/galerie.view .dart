@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_scratch/component/drawer.dart';
 
-class Homeview extends StatelessWidget {
-  const Homeview({super.key});
+
+class GalerieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
+      // drawer: MyDrawer(),
       appBar: AppBar(
-        title: const Text('Gallerie'),
+        title: const Text('Galerie'),
       ),
       body:  Center(
         child: Text(
-          'Gallerie page', 
+          'Galerie page', 
           // style: TextStyle(color: Colors.green, fontSize: 26), 
           style: Theme.of(context).textTheme.headlineMedium, 
         ),

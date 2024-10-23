@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_scratch/component/drawer.dart';
 
-class Homeview extends StatelessWidget {
-  const Homeview({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       appBar: AppBar(
         title: const Text('Home'),
       ),

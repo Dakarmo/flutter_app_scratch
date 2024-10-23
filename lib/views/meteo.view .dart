@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_scratch/component/drawer.dart';
 
-class Homeview extends StatelessWidget {
-  const Homeview({super.key});
+
+class MeteoView extends StatelessWidget {
+  
 
   @override
   Widget build(BuildContext context) {
