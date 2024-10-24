@@ -3,6 +3,7 @@ import 'package:flutter_app_scratch/views/counter.view.dart';
 import 'package:flutter_app_scratch/views/galerie.view%20.dart';
 import 'package:flutter_app_scratch/views/home.view.dart';
 import 'package:flutter_app_scratch/views/meteo.view%20.dart';
+import 'package:flutter_app_scratch/views/user.view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         "/meteo" : (context) =>  MeteoView(),
         "/galerie" : (context) => GalerieView(),
         "/counter" : (context) => CounterView(),
+        "/githubapi": (context) => UserView(),
       },
       theme: ThemeData(
          appBarTheme: const AppBarTheme(

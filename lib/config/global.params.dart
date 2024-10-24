@@ -15,6 +15,9 @@ class GlobalParams {
     {
       "title": "Counter", "icon": Icons.calculate, "route": "/counter"
     },
+    {
+      "title": "Github Users", "icon": Icons.person, "route": "/githubapi"
+    },
   ];
 }
 

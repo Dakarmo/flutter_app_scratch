@@ -39,7 +39,7 @@ class MyDrawer extends StatelessWidget {
 
           // Boucle `for` pour ajouter les ListTile
             ..._buildMenuItems(context),
-            Divider(height: 4, color: Colors.green[100]), // Ajout d'un Divider à la fin si besoin
+            
 
 
           // ListView.builder(
