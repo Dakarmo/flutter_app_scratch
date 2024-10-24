@@ -10,6 +10,7 @@ class UserView extends StatefulWidget {
 class _UserViewState extends State<UserView> {
  
  String query = '';
+ bool notVisible = false;
 
   TextEditingController queryTextEditingController = TextEditingController();
 
@@ -29,12 +30,12 @@ class _UserViewState extends State<UserView> {
       child: Column(
         children: [
           Row(
-            
             children: [
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextFormField(
+                    obscureText: notVisible,
                     onChanged: (value) {
                       setState(() {
                         query=value;
@@ -43,7 +44,18 @@ class _UserViewState extends State<UserView> {
                     controller: queryTextEditingController,
                     decoration: InputDecoration(
                       // icon: const Icon(Icons.logout),
-                      suffixIcon: const Icon(Icons.visibility),
+                      // suffixIcon: const Icon(Icons.visibility),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            notVisible = !notVisible;
+                          });
+                        },
+                        icon:  Icon(
+                          notVisible == true ? Icons.visibility_off : Icons.visibility
+                        ),
+                      ),
+                       
                       contentPadding: const EdgeInsets.all(10),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
