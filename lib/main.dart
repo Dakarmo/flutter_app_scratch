@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_scratch/views/counter.view.dart';
 import 'package:flutter_app_scratch/views/galerie.view%20.dart';
 import 'package:flutter_app_scratch/views/home.view.dart';
 import 'package:flutter_app_scratch/views/meteo.view%20.dart';
@@ -14,9 +15,10 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        "/home" : (context) => const HomeView(),
+        "/" : (context) => const HomeView(),
         "/meteo" : (context) =>  MeteoView(),
         "/galerie" : (context) => GalerieView(),
+        "/counter" : (context) => CounterView(),
       },
       theme: ThemeData(
          appBarTheme: const AppBarTheme(
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       // primarySwatch: Colors.green,
     ),
       // title: 'Flutter from scratch',
-      initialRoute: "/home",
+      initialRoute: "/",
       // home: const HomeView(),
     );
   }
