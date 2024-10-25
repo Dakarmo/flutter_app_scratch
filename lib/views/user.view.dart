@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app_scratch/views/user.repo.view.dart';
 import 'package:http/http.dart' as http;
 
 class UserView extends StatefulWidget {
@@ -61,6 +62,7 @@ void _search(String query) {
       if(queryTextEditingController.text==''){
         setState(() {
           items=[];
+          currentPage=0;
           totalPage=0;
         });
       }
@@ -123,8 +125,10 @@ void _search(String query) {
               IconButton(
                 onPressed: () {
                    setState(() {
-                     query = queryTextEditingController.text;
-                     _search(query);
+                      items=[];
+                      currentPage=0;
+                      query = queryTextEditingController.text;
+                      _search(query);
                    });
                   
                 }, 
@@ -133,12 +137,19 @@ void _search(String query) {
             ],
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) => 
+                Divider(height: 2, color:Colors.green[200]),
               controller: scrollController,
               itemCount: items.length,
               itemBuilder: (context, index) {
               
                 return ListTile(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: 
+                      (context)=>GitRepositoriesPage(login: items[index]['login'], avatarUrl: items[index]['avatar_url'],))
+                    );
+                  },
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -158,6 +169,7 @@ void _search(String query) {
                       )
                     ],
                   ),
+                  
                 );
                       
               }),
