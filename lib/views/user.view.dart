@@ -55,8 +55,17 @@ void _search(String query) {
         });
       }
     });
-  }
 
+    queryTextEditingController.addListener(()
+    {
+      if(queryTextEditingController.text==''){
+        setState(() {
+          items=[];
+          totalPage=0;
+        });
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
