@@ -18,13 +18,16 @@ class _UserViewState extends State<UserView> {
   int currentPage=0;
   int totalPage=0;
   int pageSize=20;
+  List<dynamic> items=[];
+  ScrollController scrollController = ScrollController();
 
 void _search(String query) {
-    final url = Uri.parse("https://api.github.com/search/users?q=$query&per_page=$pageSize&page=$totalPage");
+    final url = Uri.parse("https://api.github.com/search/users?q=$query&per_page=$pageSize&page=$currentPage");
     http.get(url)
       .then((response) {
         setState(() {
           data = json.decode(response.body);
+          items.addAll(data['items']);
           if(data['total_count'] % pageSize == 0){
 
             totalPage = data['total_count']~/pageSize; 
@@ -37,6 +40,23 @@ void _search(String query) {
         print(err);
     });
   }
+
+  @override
+  void initState() {
+
+    super.initState();
+    scrollController.addListener((){
+      if(scrollController.position.pixels==scrollController.position.maxScrollExtent){
+        setState(() {
+          if(currentPage<totalPage-1){
+            ++currentPage;
+            _search(query);
+          }
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return   Scaffold(
@@ -105,7 +125,8 @@ void _search(String query) {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: (data==null) ? 0 : data['items'].length,
+              controller: scrollController,
+              itemCount: items.length,
               itemBuilder: (context, index) {
               
                 return ListTile(
@@ -115,15 +136,15 @@ void _search(String query) {
                       Row(
                         children: [
                           CircleAvatar(
-                            backgroundImage: NetworkImage(data['items'][index]['avatar_url']),
+                            backgroundImage: NetworkImage(items[index]['avatar_url']),
                             radius: 20,
                           ),
                           const SizedBox(width: 10, ),
-                          Text("${data['items'][index]['login']}"),
+                          Text("${items[index]['login']}"),
                         ],
                       ),
                       CircleAvatar(
-                        child: Text("${data['items'][index]['score']}"),
+                        child: Text("${items[index]['score']}"),
                             // radius: 10,
                       )
                     ],
